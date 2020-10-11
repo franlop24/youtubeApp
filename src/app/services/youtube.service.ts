@@ -10,7 +10,7 @@ export class YoutubeService {
 
   private youtubeUrl    = 'https://www.googleapis.com/youtube/v3/playlistItems';
   private apikey        = 'AIzaSyCGhnj6PqiQRoaxub55T7H9vL_eTL5ifzw';
-  private playlist      = 'UUuaPTYj15JSkETGnEseaFFg';
+  private playlist      = 'UUo3AxjxePfj6DHn03aiIhww';
   private nextPageToken = '';
 
   constructor(private http: HttpClient) { 
@@ -23,6 +23,7 @@ export class YoutubeService {
         .set('maxResults', '10')
         .set('playlistId', this.playlist)
         .set('key', this.apikey)
+        .set('pageToken', this.nextPageToken)
 
     return this.http.get<YoutubeResponse>(url, { params })
             .pipe(
